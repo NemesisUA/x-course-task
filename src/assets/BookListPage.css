@@ -1,0 +1,94 @@
+form[name="search"] {
+    display: flex;
+    padding: 30px 0 50px;    
+}
+
+.book-name,
+.book-price { 
+    padding: 0 10px;   
+    font-size: 20px;
+    line-height: 2;
+    border: 2px solid dodgerblue;
+    box-shadow: var(--box-shadow);
+    outline: none;
+    cursor: pointer;
+}
+
+.book-name { 
+    width: 300px;  
+    margin-right: 30px;    
+}
+
+.search-label {
+    position: relative;
+}
+
+.search-label::after {
+    position: absolute;
+    top: 10px;
+    right: 40px;   
+    content: "";
+    display: block;
+    width: 26px;
+    height: 206px;
+    background-image: url(./images/icons/search-solid.svg);
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.search-label:hover::after {
+    width: 28px;
+    height: 28px;
+}
+
+.book-price {
+    border-radius: 5px;
+}
+
+.book-price option {
+    font-size: 1.6rem;
+    font-weight: 500;
+    padding: 14px;
+}
+
+/* books-container */
+.books-container {
+    display: flex;    
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    gap: 40px 40px;
+}
+
+@media screen and (max-width: 575px) {    
+    form[name="search"] {
+        flex-direction: column;
+    }
+
+    .search-label::after {
+        right: 10px;
+    }
+
+    .book-price {    
+       padding: 10px 10px 10px 0;        
+    }
+
+    .book-name { 
+        width: 100%;  
+        margin-bottom: 20px;        
+    }
+
+    .card {
+        width: 100%;
+    }
+}
+
+@media screen  and (max-width: 320px) {
+    :root {
+        font-size: 8px;
+    }
+
+    .wrapper {
+        padding: 0 8px;
+    }
+}

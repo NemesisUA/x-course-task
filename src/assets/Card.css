@@ -1,0 +1,44 @@
+.card {
+    width: 350px;   
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;   
+    padding: 10px;   
+    color: black;
+    background-color: #fff;
+    border: 1px solid gray;
+    border-radius: 4px;
+    box-shadow: var(--box-shadow);
+}
+
+.book-img-container {
+    min-height: 367px;
+}
+
+.book-img-container img{
+    width: 100%;
+}
+
+.book-title {
+    color: dodgerblue;
+    text-shadow: var(--text-shadow);
+}
+
+.book-author {
+    font-weight: 500;
+}
+
+.price-block {    
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;   
+}
+
+.price-block span {
+    font-size: 2rem;
+    color: dodgerblue;
+}
+
+.viev-btn {
+    padding: 0 2.5em;
+}

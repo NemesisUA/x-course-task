@@ -1,0 +1,39 @@
+button {
+    font-size: 1.8rem;
+    font-weight: 700;    
+    padding: 0.9rem 1.4rem;
+    border-radius: 10px;
+    border: 2px solid dodgerblue;
+    color: #fff;
+    background-color: dodgerblue;
+    overflow: hidden;
+    position: relative;
+}
+
+header button {
+    filter: var(--drop-shadow);
+}
+
+button:after {
+    position: absolute;
+    background: #fff;
+    content: "";
+    height: 155px;
+    left: -75px;
+    opacity: 0.2;
+    top: -50px;
+    transform: rotate(35deg);
+    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    width: 50px;
+    z-index: -10;
+  }
+
+button:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--box-shadow);
+}
+
+button:hover::after { 
+    left: 120%;    
+    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);  
+}

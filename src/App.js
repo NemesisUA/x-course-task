@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route} from 'react-router-dom';
+
+import { BookListPage } from './pages/BookListPage'
+import { SpecificBookPage } from './pages/SpecificBookPage';
+import { CartPage } from './pages/CartPage';
+import { Notfoundpage } from './pages/Notfoundpage';
+import { SigninPage } from './pages/SigninPage';
+
+import { Layout } from './components/Layout';
+
+import { RequireAuth } from './hoc/RequireAuth';
+import { AuthProvider } from './hoc/AuthProvider';
+import { BooksListProvider } from './hoc/BooksListProvider';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  return (    
+    <AuthProvider>
+      <BooksListProvider>
+      <Routes>
+        <Route path='/' element={<Layout />}>          
+          <Route index element={<BookListPage />} />
+          <Route path=':id' element={
+            <RequireAuth>
+              <SpecificBookPage />
+            </RequireAuth>
+          } />          
+          <Route path='signin' element={<SigninPage />} />
+          <Route path='cart' element={<CartPage />} />
+          <Route path='*' element={<Notfoundpage />} />
+        </Route>
+      </Routes>
+      </BooksListProvider>
+    </AuthProvider>
   );
 }
 
