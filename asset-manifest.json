@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/x-course-task/static/css/main.50a4e628.css",
+    "main.js": "/x-course-task/static/js/main.9db81fcd.js",
+    "static/media/avatar.png": "/x-course-task/static/media/avatar.0d14c6999b4a5c8e86a7.png",
+    "static/media/imageNotFound.png": "/x-course-task/static/media/imageNotFound.298b98203c3825c61303.png",
+    "static/media/avatar3.svg": "/x-course-task/static/media/avatar3.120811d1a1ec51f3c63b6af754c58b7a.svg",
+    "static/media/logo_yellow_blue.svg": "/x-course-task/static/media/logo_yellow_blue.f79402c5a02466a5d4f7.svg",
+    "static/media/cart-plus-solid.svg": "/x-course-task/static/media/cart-plus-solid.9458db8a02428e151741.svg",
+    "index.html": "/x-course-task/index.html",
+    "static/media/search-solid.svg": "/x-course-task/static/media/search-solid.73899ae997cb79a6f2f1.svg",
+    "main.50a4e628.css.map": "/x-course-task/static/css/main.50a4e628.css.map",
+    "main.9db81fcd.js.map": "/x-course-task/static/js/main.9db81fcd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.50a4e628.css",
+    "static/js/main.9db81fcd.js"
+  ]
+}
