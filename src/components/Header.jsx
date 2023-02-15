@@ -8,7 +8,10 @@ const Header = () => {
     const {user, signout} = useAuth();
 
     const handleSignout = () => {        
-        signout(() => navigate('/signin', {replace: true}))
+        signout(() => {
+            localStorage.removeItem('user');
+            localStorage.clear();
+            navigate('/signin', {replace: true})})
     }
 
     return (

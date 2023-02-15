@@ -2,8 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;   
-    margin: 80px auto;
-    filter: drop-shadow(3px 3px 6px grey);
+    margin: 80px auto;    
 }
 
 .login__heading {
@@ -15,6 +14,7 @@
 
 .login__img {
     width: 100%;
+    filter: drop-shadow(3px 3px 6px grey);
 }
 
 .login__avatar {
@@ -37,4 +37,11 @@
     outline: none;
     padding-left: 10px;
     margin-bottom: 20px;
+}
+
+.login__submit:disabled {
+    background-color: gray;
+    border: 2px solid grey;
+    box-shadow: none;
+    transform: none;
 }
