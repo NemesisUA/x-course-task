@@ -8,7 +8,8 @@ export const BooksListProvider = ({children}) => {
     const getData=()=>{
         fetch('./books.json')
           .then(response => response.json())
-          .then(data => setData(data.books))          
+          .then(data => setData(data.books))
+          .catch(error => console.log(error.message));          
       }
 
     useEffect(() => {

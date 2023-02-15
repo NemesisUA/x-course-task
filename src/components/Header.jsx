@@ -24,7 +24,9 @@ const Header = () => {
                 <p className="sub-heading">/ Mezit Tetyana</p>
                 { user && 
                     <div className="cart-block">
-                        <div className="cart-block__cart"></div>                    
+                        <Link to="cart">
+                            <div className="cart-block__cart"></div>                    
+                        </Link>
                         <Button onClick={handleSignout} className="cart-block__sign-btn" children="Sign-Out"></Button>
                         <div className="cart-block__user">
                             <div className="cart-block__user-avatar"></div>

@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useNavigate} from 'react-router-dom';
 import { useState, useEffect, useContext } from 'react';
 import { BooksListContext } from "../hoc/BooksListProvider";
@@ -6,20 +6,34 @@ import { BooksListContext } from "../hoc/BooksListProvider";
 const SpecificBookPage = () => {
     const navigate = useNavigate();
     const { id } = useParams();
-    const book = useContext(BooksListContext)[id];
+    console.log('id',id);
 
-    const goBack = () => navigate('/');
+    const book = useContext(BooksListContext)[id - 1] || null; 
+    
+    useEffect(()=>{
+        if ( !Number.isInteger(+id) ) {
+          return  navigate('*', {replace: true});
+        }        
+    }, [id, navigate]); 
 
     return (
-        <div>
-            <button onClick={goBack}>go back</button>
+        <>            
             { book && (
                 <>
                     <h2>{book.title}</h2>
                     <p>{book.shortDescription}</p>
+                    <Link to="/"><button>go home</button></Link>
                 </>
             )}
-        </div>        
+            { !book && (
+                <>
+                    <h3>Oops, there is no such a book.</h3>
+                    <Link to="/"><button>go home</button></Link>
+                </>
+            )
+
+            }
+        </>        
     )
 }
 
