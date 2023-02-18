@@ -1,12 +1,12 @@
 import '../assets/BookListPage.css';
-import { useState, useEffect, useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { BooksListContext } from "../hoc/BooksListProvider";
 import { Card } from '../components/Card';
 
 export function BookListPage() {    
-    const books = useContext(BooksListContext)   
-    
+    const books = useContext(BooksListContext);
+     
     return (
         <>
             <section className="search-block">
@@ -30,7 +30,7 @@ export function BookListPage() {
                 <div className="wrapper">
                     <div className="books-container" id="books-container">
                         {books && books.length > 0 && books.map(book => (
-                            <Link key={book.id} to={`/${book.id}`} >
+                            <Link key={book.id} to={`books/${book.id}`} >
                                 <Card book={book}></Card>
                             </Link>
                         ))

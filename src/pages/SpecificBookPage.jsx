@@ -5,16 +5,15 @@ import { BooksListContext } from "../hoc/BooksListProvider";
 
 const SpecificBookPage = () => {
     const navigate = useNavigate();
-    const { id } = useParams();
-    console.log('id',id);
+    const { id } = useParams();    
 
     const book = useContext(BooksListContext)[id - 1] || null; 
     
     useEffect(()=>{
         if ( !Number.isInteger(+id) ) {
-          return  navigate('*', {replace: true});
+          return  navigate('/*', {replace: true});
         }        
-    }, [id, navigate]); 
+    }, [id]); 
 
     return (
         <>            
