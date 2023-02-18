@@ -9,7 +9,7 @@ export const BooksListProvider = ({children}) => {
         fetch('./books.json')
           .then(response => response.json())
           .then(data => setData(data.books))
-          .catch(error => console.log(error.message));          
+          .catch(error => console.error(error.message));          
       }
 
     useEffect(() => {
