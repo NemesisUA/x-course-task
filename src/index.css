@@ -86,24 +86,7 @@ main {
   .cart-block__cart {        
       justify-content: space-around;       
   }
-
-  form[name="search"] {
-      flex-direction: column;
-  }
-
-  .search-label::after {
-      right: 10px;
-  }
-
-  .book-price {    
-     padding: 10px 10px 10px 0;        
-  }
-
-  .book-name { 
-      width: 100%;  
-      margin-bottom: 20px;        
-  }
-
+  
   .card {
       width: 100%;
   }
