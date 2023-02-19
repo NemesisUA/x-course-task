@@ -7,10 +7,8 @@ const Layout = () => {
         <>
             <Header></Header>
 
-            <main>
-                <div className="wrapper">
-                    <Outlet></Outlet>
-                </div>
+            <main>                
+                <Outlet></Outlet>                
             </main>
 
             <Footer></Footer>
