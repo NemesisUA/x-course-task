@@ -1,14 +1,15 @@
 .card {
-    width: 350px;   
+    width: 360px;
+    min-height: 633px;  
     display: flex;
-    flex-direction: column; 
-    justify-content: space-between;   
+    flex-direction: column;
+    justify-content: space-between;  
     padding: 10px;   
     color: black;
     background-color: #fff;
     border: 1px solid gray;
     border-radius: 4px;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--box-shadow);    
 }
 
 .book-img-container {
@@ -42,3 +43,40 @@
 .viev-btn {
     padding: 0 2.5em;
 }
+
+.tooltip {
+    position: relative;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden; 
+    position: absolute;
+    z-index: 1;
+    width: 340px;
+    bottom: 120%;
+    left: 50%;
+    margin-left: -170px;   
+    background-color: grey;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    opacity: 0;
+    transition: opacity 1s;    
+  }  
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .tooltip .tooltiptext::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: grey transparent transparent transparent;
+  }

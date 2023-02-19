@@ -66,6 +66,7 @@ form[name="search"] {
 }
 
 /* books-container */
+
 .books-container {
     display: flex;    
     flex-wrap: wrap;
