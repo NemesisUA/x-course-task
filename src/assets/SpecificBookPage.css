@@ -1,0 +1,102 @@
+.book-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.book {
+    padding: 40px 20px;
+}
+
+.book__card {
+    display: flex;
+}
+
+.book__image {
+    margin-right: 20px;
+    margin-bottom: 20px;    
+}
+
+.book__props {
+    padding-top: 20px;
+}
+
+.book__buy {
+    display: flex;
+    flex-direction: column;
+    min-width: 400px;
+    background-color: #fff;
+    border: 2px dashed black;
+    padding: 20px;
+}
+
+.buy-book-btn {
+    margin-top: auto;
+    margin-left: auto;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.book__buy th {
+    text-align: left;
+}
+
+.book__buy td {
+    text-align: right;
+    font-size: 2rem;
+}
+
+.book__buy tr {
+    line-height: 2;
+}
+
+input.amount {
+    width: 4em;
+    font-size: 2rem;
+    text-align: right;
+    padding: 5px;
+    padding-right: 24px;
+    border-radius: 14px;
+    border: 2px solid dodgerblue;
+}
+
+input.amount:focus {
+    outline: none;
+}
+
+/* controls */
+.controls-container {
+    position: relative;    
+    padding-top: 5px;
+    padding-bottom: 5px;    
+}
+
+.controls-box {
+    position: absolute;    
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: inline-flex;    
+    flex-direction: column; 
+    justify-content: center; 
+    vertical-align: middle;    
+    border-left: 2px solid dodgerblue;  
+}
+
+.control {   
+    cursor: pointer;
+    display: block;
+    transition: all 0.3s ease-in;
+    padding-right: 5px;
+
+    font-size: 16px;
+    line-height: 1;
+    color: dodgerblue;    
+}
+
+.control:hover {
+   color: blue;
+   text-shadow: 0 0 6px #999;
+   transform: scale(0.9)
+}
