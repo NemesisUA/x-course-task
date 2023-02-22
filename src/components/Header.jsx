@@ -2,15 +2,18 @@ import '../assets/Header.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hook/useAuth';
 import Button from './Button';
+import { useCart } from '../hook/useCart';
 
 const Header = () => {
     const navigate = useNavigate();
     const {user, signout} = useAuth();
+    const { setCartItems } = useCart();
 
     const handleSignout = () => {        
         signout(() => {
             localStorage.removeItem('user');
             localStorage.clear();
+            setCartItems([]);
             navigate('/signin', {replace: true})})
     }
 

@@ -20,8 +20,8 @@ const SigninPage = () => {
     }
 
     const checkLength = (e) => {
-        const user = e.target.value;        
-        if (user.length >= 4 && user.length < 17) {
+        const login = e.target.value;        
+        if (login.length >= 4 && login.length < 17) {
             setDisabled(false);            
         } else {
             setDisabled(true);

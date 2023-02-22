@@ -1,19 +1,20 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext,useState } from "react";
+import { LocalStorageService, LS_KEYS  } from "../services/localStorage";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(localStorage.getItem('user') || '');   
+    const [user, setUser] = useState(LocalStorageService.get(LS_KEYS.USER) || '');   
 
     const signin = (newUser, callback) => {
         setUser(newUser);
-        localStorage.setItem('user', newUser);
+        LocalStorageService.set(LS_KEYS.USER, newUser);
         callback();
     };
 
     const signout = (callback) => {
         setUser('');        
-        localStorage.clear();
+        LocalStorageService.clearAll();
         callback();
     };
 

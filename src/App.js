@@ -11,11 +11,13 @@ import { Layout } from './components/Layout';
 import { RequireAuth } from './hoc/RequireAuth';
 import { AuthProvider } from './hoc/AuthProvider';
 import { BooksListProvider } from './hoc/BooksListProvider';
+import { CartProvider } from './hoc/CartProvider';
 
 function App() {
   return (
     <AuthProvider>
       <BooksListProvider>
+        <CartProvider>
         <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={
@@ -36,6 +38,7 @@ function App() {
             <Route path='*' element={<Notfoundpage />} />
           </Route>
         </Routes>
+        </CartProvider>
       </BooksListProvider>
     </AuthProvider>
   );

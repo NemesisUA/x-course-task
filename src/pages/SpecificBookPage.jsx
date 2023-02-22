@@ -4,24 +4,27 @@ import { useState, useEffect, useContext } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { BooksListContext } from "../hoc/BooksListProvider";
+import { useCart } from '../hook/useCart';
+import { LocalStorageService, LS_KEYS } from '../services/localStorage';
 
 const SpecificBookPage = () => {
     const navigate = useNavigate();
-    const { id } = useParams();
-    console.log('id', id)
+    const { id } = useParams();   
     const book = useContext(BooksListContext)[id - 1] || null;
-    console.log('book', book)
+    const price = book ? book.price : 0;
 
-    const [amount, setAmount] = useState(1);
-    const [totalPrice, setTotalPrice]  = useState(amount * book.price)   
+    const storageAmount = LocalStorageService.get(LS_KEYS.CART) ?
+        [...LocalStorageService.get(LS_KEYS.CART)]
+            .filter(el => el.id == id)
+            .map(el => el.amount)[0] 
+        : 0;
 
+    const [amount, setAmount] = useState(storageAmount || 1);        
 
-    useEffect(() => {
-        if (!Number.isInteger(+id)) {
-            return navigate('/*', { replace: true });
-        }
-    }, [id]);  
+    const [totalPrice, setTotalPrice]  = useState(amount * price);
     
+    const { cartItems, setCartItems } = useCart();
+   
     const handleAmountChange = (e) => { 
         const newAmount = e.target.value;
         const amountDigitsOmly = newAmount.replace(/[^0-9]/g, '');
@@ -32,21 +35,34 @@ const SpecificBookPage = () => {
     function validateAmaunt(value) {
         if (value < 1) {
           value = 1;
-        };
+        }
         if (value > 42) {
           value = 42;
-        };
+        }
         return value;
       }
 
     useEffect(() => {
-        setTotalPrice(amount * book.price)
+        setTotalPrice((amount * price).toFixed(2))
     }, [amount])
 
     const handleSpinClick = (e) => {
         const spinValue = e.target.dataset.add;
         const updatedAmount = validateAmaunt(amount + +spinValue);
         setAmount(updatedAmount);
+    }
+
+    const handleSubmit = (e) => { 
+        e.preventDefault();
+        LocalStorageService.set(LS_KEYS.CART, cartItems);           
+    }
+
+    const handleAddToCart = () => {           
+            setCartItems((prevstate) => ([...prevstate.filter(el => el.id != id), {
+                id: book.id,
+                amount: amount,
+                totalPrice: totalPrice
+            }]));
     }
 
     return (
@@ -76,7 +92,8 @@ const SpecificBookPage = () => {
                                     <p>lorem, ipsum, lorem</p>
                                 </div>
                             </div>
-                            <form className="book__buy" name="book-order">
+                            <form onSubmit={handleSubmit}
+                             className="book__buy" name="book-order">
                                 <table>
                                     <tbody>
                                         <tr>
@@ -104,7 +121,8 @@ const SpecificBookPage = () => {
                                         </tr>
                                     </tbody>
                                 </table>
-                                <button className="buy-book-btn">Add to cart</button>
+                                <button onClick={handleAddToCart}
+                                    type="submit" className="buy-book-btn">Add to cart</button>
                             </form>
                         </div>
                         <span className="bold">Book description:</span>
