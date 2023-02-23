@@ -12,6 +12,7 @@ import { RequireAuth } from './hoc/RequireAuth';
 import { AuthProvider } from './hoc/AuthProvider';
 import { BooksListProvider } from './hoc/BooksListProvider';
 import { CartProvider } from './hoc/CartProvider';
+import { EmptyCartPage } from './pages/EmptyCartPage';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
                 <CartPage />
               </RequireAuth>
             } />
+            <Route path='emptyCart' element={<EmptyCartPage />} />
             <Route path='signin' element={<SigninPage />} />
             <Route path='*' element={<Notfoundpage />} />
           </Route>

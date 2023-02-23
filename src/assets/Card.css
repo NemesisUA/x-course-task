@@ -52,10 +52,10 @@
     visibility: hidden; 
     position: absolute;
     z-index: 1;
-    width: 340px;
+    width: 100%;
     bottom: 120%;
     left: 50%;
-    margin-left: -170px;   
+    margin-left: -50%;   
     background-color: grey;
     color: #fff;
     text-align: center;
@@ -80,3 +80,15 @@
     border-style: solid;
     border-color: grey transparent transparent transparent;
   }
+
+  @media screen  and (max-width: 575px) {    
+    .card {
+        width: 320px;       
+      }
+    }
+
+  @media screen  and (max-width: 320px) {    
+    .card {
+        width: 300px;
+      }
+}

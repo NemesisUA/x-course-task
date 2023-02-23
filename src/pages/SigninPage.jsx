@@ -1,7 +1,7 @@
-import '../assets/Signin.css';
-import avatar from '../assets/images/icons/avatar3.svg';
 import { useState } from 'react';
 import { useLocation, useNavigate} from 'react-router-dom';
+import '../assets/Signin.css';
+import avatar from '../assets/images/icons/avatar3.svg';
 import { useAuth } from '../hook/useAuth';
 
 const SigninPage = () => {

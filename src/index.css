@@ -19,6 +19,7 @@ body {
   background-color: lemonchiffon; 
   margin: 0;
   padding: 0;
+  min-width: 300px;
 }
 
 .wrapper {
@@ -86,10 +87,15 @@ main {
   .cart-block__cart {        
       justify-content: space-around;       
   }
+
+  .cart-block__user {
+    flex-direction: column;
+  }
   
   .card {
-      width: 100%;
+      width: 320px;
   }
+  
 }
 
 @media screen  and (max-width: 320px) {
