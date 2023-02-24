@@ -6,7 +6,7 @@ const BooksFilter = ({ setSearchParams, bookQuery}) => {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        const form = e.target;
+        const form = document.forms[0];
         const bookQuery = form.search.value;
         const priceQuery = form.select.value;
 
@@ -34,11 +34,12 @@ const BooksFilter = ({ setSearchParams, bookQuery}) => {
                 <div className="wrapper">
                     <form name="search" onSubmit={handleSearch}>
                         <div>
-                            <label htmlFor="book-name" className="search-label">
+                            <label htmlFor="book-name" className="search-label">                               
                                 <input value={ search } onChange={ (e) => setSearch(e.target.value) }
                                     type="search" 
                                     id="book-name" name="search" className="book-name" 
                                     placeholder="Search by book name" />
+                                    <span onClick={handleSearch} ></span>
                             </label>
 
                             <select value={ selectedOption } onChange= { (e) => setSelectedOption(e.target.value) }

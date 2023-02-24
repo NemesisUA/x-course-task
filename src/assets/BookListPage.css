@@ -28,8 +28,9 @@ form[name="search"] {
     margin-right: 30px;
 }
 
-.search-label::after {
+.search-label span {
     position: absolute;
+    display: block;
     top: -5px;
     right: 10px;   
     content: "";
@@ -41,7 +42,7 @@ form[name="search"] {
     cursor: pointer;
 }
 
-.search-label:hover::after {
+.search-label:hover span {
     width: 28px;
     height: 28px;
 }
