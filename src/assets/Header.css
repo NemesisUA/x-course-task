@@ -43,6 +43,7 @@ h1 {
 }
 
 .cart-block__cart {
+    position: relative;       
     background-image: url(../assets/images/icons/cart-plus-solid.svg);
     background-repeat: no-repeat;
     background-position: center;
@@ -56,6 +57,39 @@ h1 {
     transition: all 0.3s ease-in;
     filter: var(--drop-shadow);
 }
+
+.cart-block__items {
+    position: absolute;
+    bottom: 30px;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    color: red;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid red;
+    margin: 0 auto;
+}
+
+/* .cart-block__cart::after {    
+    content: '2';    
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 30px;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    color: red;
+    font-weight: bold;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 1px solid red;
+} */
 
 .cart-block__cart:hover {
     transform: scale(1.1);

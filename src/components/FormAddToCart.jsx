@@ -34,7 +34,7 @@ const FormAddToCart = ({ id, book, price }) => {
 
     useEffect(() => {
         setTotalPrice((amount * price).toFixed(2))
-    }, [amount])
+    }, [amount, price])
 
 
     const handleSpinClick = (e) => {

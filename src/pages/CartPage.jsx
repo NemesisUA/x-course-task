@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useCart } from "../hook/useCart";
 import { CartItem } from "../components/CartItem";
 import '../assets/CartPage.css';
-import Button from '../components/Button'
 import { LocalStorageService, LS_KEYS } from "../services/localStorage";
 
 export function CartPage() {
@@ -14,6 +13,7 @@ export function CartPage() {
 
     const handlePurchase = (e) => {
       e.preventDefault();
+      setCartItems(() => []);
       LocalStorageService.remove(LS_KEYS.CART);
       navigate('/emptyCart', {replace: true});
     }

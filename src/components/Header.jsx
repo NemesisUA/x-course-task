@@ -7,7 +7,9 @@ import { useCart } from '../hook/useCart';
 const Header = () => {
     const navigate = useNavigate();
     const {user, signout} = useAuth();
-    const { setCartItems } = useCart();
+    const {cartItems, setCartItems } = useCart();
+
+    const booksInCart = cartItems.map(item => item.amount).reduce((a, b)=>  a + b, 0);
 
     const handleSignout = () => {        
         signout(() => {
@@ -28,7 +30,13 @@ const Header = () => {
                 { user && 
                     <div className="cart-block">
                         <Link to="cart">
-                            <div className="cart-block__cart"></div>                    
+                            <div className="cart-block__cart">
+                                {
+                                   booksInCart ? <div className="cart-block__items">
+                                        {booksInCart}
+                                    </div> : ''
+                                }
+                            </div>                    
                         </Link>
                         <Button onClick={handleSignout} className="cart-block__sign-btn" children="Sign-Out"></Button>
                         <div className="cart-block__user">
