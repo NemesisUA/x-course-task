@@ -3,8 +3,7 @@ import '../assets/CartPage.css'
 
 const CartItem = ({id, amount, totalPrice}) => {
     const bookItem = useBooks()[id];
-    console.log('bookI', bookItem);
-
+   
     return (
         <p className='cart-items'>
             <span>{bookItem.title}</span>

@@ -5,7 +5,7 @@ import { LocalStorageService, LS_KEYS } from '../services/localStorage';
 const FormAddToCart = ({ id, book, price }) => {
     const storageAmount = LocalStorageService.get(LS_KEYS.CART) ?
         [...LocalStorageService.get(LS_KEYS.CART)]
-            .filter(el => el.id == id)
+            .filter(el => el.id === +id)
             .map(el => el.amount)[0] 
         : 0;
 
@@ -49,7 +49,7 @@ const FormAddToCart = ({ id, book, price }) => {
     }
 
     const handleAddToCart = () => {           
-            setCartItems((prevstate) => ([...prevstate.filter(el => el.id != id), {
+            setCartItems((prevstate) => ([...prevstate.filter(el => el.id !== +id), {
                 id: book.id,
                 amount: amount,
                 totalPrice: totalPrice
