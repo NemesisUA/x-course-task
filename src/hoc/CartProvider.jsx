@@ -1,7 +1,7 @@
 import { createContext,useState } from "react";
 import { LocalStorageService, LS_KEYS  } from "../services/localStorage";
 
-export const CartContext = createContext(null);
+export const CartContext = createContext([], () => {});
 
 export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState(LocalStorageService.get(LS_KEYS.CART) || []);

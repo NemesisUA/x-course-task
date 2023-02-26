@@ -57,24 +57,27 @@ const FormAddToCart = ({ id, book, price }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit}
+        <form onSubmit={handleSubmit} data-testid="formAddToCart"
             className="book__buy" name="book-order">
             <table>
                 <tbody>
                     <tr>
                         <th>Price, $</th>
-                        <td id="book-price">{book.price}</td>
+                        <td id="book-price">{price}</td>
                     </tr>
                     <tr>
                         <th>Count</th>
                         <td>
                             <label id="controls-container" className="controls-container">
                                 <input value={amount} onChange={handleAmountChange}
+                                    data-testid="amount"
                                     className="amount" id="amount" type="text" />
                                 <div className="controls-box">
                                     <div onClick={handleSpinClick}
+                                        data-testid="spinEncrease" 
                                         className="control" data-add="1">{'\u25b2'}</div>
                                     <div onClick={handleSpinClick}
+                                        data-testid="spinDecrease" 
                                         className="control" data-add="-1">{'\u25bc'}</div>
                                 </div>
                             </label>
@@ -82,7 +85,10 @@ const FormAddToCart = ({ id, book, price }) => {
                     </tr>
                     <tr>
                         <th>Total price</th>
-                        <td id="total-price">{totalPrice}</td>
+                        <td 
+                            data-testid="total-price" id="total-price">
+                            {totalPrice}
+                        </td>
                     </tr>
                 </tbody>
             </table>
