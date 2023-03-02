@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../hook/useCart";
 import { CartItem } from "../components/CartItem";
@@ -8,8 +8,17 @@ import { LocalStorageService, LS_KEYS } from "../services/localStorage";
 export function CartPage() {
     const { cartItems, setCartItems } = useCart();
     const purchasePrice = [...cartItems].reduce((acc, cur) => { return acc + +cur.totalPrice}, 0 ).toFixed(2);
-    
+
     const navigate = useNavigate();
+
+    const [isDisabled, setIsDisabled] = useState(true);
+
+    useEffect(() => {
+      const isCartEmpty = [...cartItems].map(item => item.amount)
+          .reduce((a, b)=>  a + b, 0) ? false : true;
+    setIsDisabled(() => (isCartEmpty))                                
+    }, [cartItems])
+    
 
     const handlePurchase = (e) => {
       e.preventDefault();
@@ -21,7 +30,7 @@ export function CartPage() {
     return (
       <div className="wrapper cart-wrapper">        
         <form onSubmit={handlePurchase}>
-          <button type="submit">Purchase</button>
+          <button type="submit" disabled={isDisabled}>Purchase</button>
           <ul className="cart-container">{
             cartItems.map(item => (
               <li key={item.id}>

@@ -47,6 +47,13 @@ button {
     box-shadow: var(--box-shadow);
 }
 
+button[type='submit']:disabled {
+    background-color: gray;
+    border: 2px solid grey;
+    box-shadow: none;
+    transform: none;
+}
+
 .total-price {
     color: dodgerblue;
     text-shadow: var(--text-shadow);
