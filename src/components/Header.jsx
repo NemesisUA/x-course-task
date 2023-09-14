@@ -7,7 +7,7 @@ import { useCart } from '../hook/useCart';
 const Header = () => {
     const navigate = useNavigate();
     const {user, signout} = useAuth();
-    const {cartItems, setCartItems } = useCart();
+    const {cartItems, setCartItems } = useCart([]);
 
     const booksInCart = cartItems.map(item => item.amount).reduce((a, b)=>  a + b, 0);
 
