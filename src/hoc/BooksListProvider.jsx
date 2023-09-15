@@ -17,10 +17,6 @@ export const BooksListProvider = ({children}) => {
         getData();        
     }, [])
 
-    useEffect(() => {
-        setData(books);
-    }, [])
-
     return (
         <BooksListContext.Provider value={data}>
             {children}
