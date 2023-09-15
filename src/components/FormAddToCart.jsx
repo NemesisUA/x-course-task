@@ -3,7 +3,9 @@ import { useCart } from '../hook/useCart';
 import { LocalStorageService, LS_KEYS } from '../services/localStorage';
 
 const FormAddToCart = ({ id, book, price }) => {
-    const storageAmount = LocalStorageService.get(LS_KEYS.CART) ?
+    const { addToCart, removeFromCart, updateTotalAndAmount } = useCart();
+
+    const storageAmount = LocalStorageService.get(LS_KEYS.CART.amount) ?
         [...LocalStorageService.get(LS_KEYS.CART)]
             .filter(el => el.id === +id)
             .map(el => el.amount)[0] 
@@ -13,7 +15,6 @@ const FormAddToCart = ({ id, book, price }) => {
 
     const [totalPrice, setTotalPrice]  = useState(amount * price);
     
-    const { cartItems, setCartItems } = useCart();
    
     const handleAmountChange = (e) => { 
         const newAmount = e.target.value;
@@ -44,16 +45,17 @@ const FormAddToCart = ({ id, book, price }) => {
     }
 
     const handleSubmit = (e) => { 
-        e.preventDefault();
-        LocalStorageService.set(LS_KEYS.CART, cartItems);           
+        e.preventDefault();                  
     }
 
-    const handleAddToCart = () => {           
-            setCartItems((prevstate) => ([...prevstate.filter(el => el.id !== +id), {
-                id: book.id,
-                amount: amount,
-                totalPrice: totalPrice
-            }]));
+    const handleAddToCart = () => {
+        removeFromCart(id); // clear stored amount   
+
+        addToCart({
+            id: book.id,
+            amount: amount,
+            totalPrice: totalPrice
+        }); // set new amount        
     }
 
     return (

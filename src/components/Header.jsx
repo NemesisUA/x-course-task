@@ -7,16 +7,13 @@ import { useCart } from '../hook/useCart';
 const Header = () => {
     const navigate = useNavigate();
     const {user, signout} = useAuth();
-    const {cartItems, setCartItems } = useCart();
+    const { cartState }= useCart();
 
-    const booksInCart = cartItems.map(item => item.amount).reduce((a, b)=>  a + b, 0);
+   // const booksInCart = cartItems.map(item => item.amount).reduce((a, b)=>  a + b, 0);
+   const booksInCart = 0;
 
     const handleSignout = () => {        
-        signout(() => {
-            localStorage.removeItem('user');
-            localStorage.clear();
-            setCartItems([]);
-            navigate('/signin', {replace: true})})
+        signout(() => navigate('/signin', {replace: true}))
     }
 
     return (
@@ -25,18 +22,17 @@ const Header = () => {
             <Link to="/">
                 <h1>JS BAND STORE </h1>
             </Link>
-            <div className="authorisation-wrapper">
-                <p className="sub-heading">/ Mezit Tetyana</p>
+            <div className="authorisation-wrapper">                
                 { user && 
                     <div className="cart-block">
                         <Link to="cart">
-                            <div className="cart-block__cart">
+                            {/* <div className="cart-block__cart">
                                 {
                                    booksInCart ? <div className="cart-block__items">
                                         {booksInCart}
                                     </div> : ''
                                 }
-                            </div>                    
+                            </div>                     */}
                         </Link>
                         <Button onClick={handleSignout} className="cart-block__sign-btn" children="Sign-Out"></Button>
                         <div className="cart-block__user">

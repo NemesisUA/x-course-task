@@ -4,7 +4,7 @@ export default function Footer() {
     return (
         <footer className="footer">
             <div className="wrapper">
-                <p>Виконано в<a href="https://prometheus.org.ua/" target="_blank" rel="noreferrer">Pr<span></span>metheus</a>&copy;2022</p>
+                <p>Ciklum & <a href="https://prometheus.org.ua/" target="_blank" rel="noreferrer">Pr<span></span>metheus</a>v2</p>
             </div>
         </footer>
     )

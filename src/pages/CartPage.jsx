@@ -6,24 +6,22 @@ import '../assets/CartPage.css';
 import { LocalStorageService, LS_KEYS } from "../services/localStorage";
 
 export function CartPage() {
-    const { cartItems, setCartItems } = useCart();
-    const purchasePrice = [...cartItems].reduce((acc, cur) => { return acc + +cur.totalPrice}, 0 ).toFixed(2);
-
     const navigate = useNavigate();
 
+    const { cartState, clearCart } = useCart();
+    const purchasePrice = cartState.total;
     const [isDisabled, setIsDisabled] = useState(true);
 
     useEffect(() => {
-      const isCartEmpty = [...cartItems].map(item => item.amount)
+      const isCartEmpty = [...cartState.cartItems].map(item => item.amount)
           .reduce((a, b)=>  a + b, 0) ? false : true;
-    setIsDisabled(() => (isCartEmpty))                                
-    }, [cartItems])
+      setIsDisabled(() => (isCartEmpty))                                
+    }, [cartState.cartItems])
     
 
     const handlePurchase = (e) => {
       e.preventDefault();
-      setCartItems(() => []);
-      LocalStorageService.remove(LS_KEYS.CART);
+      clearCart();      
       navigate('/emptyCart', {replace: true});
     }
 
@@ -32,7 +30,7 @@ export function CartPage() {
         <form onSubmit={handlePurchase}>
           <button type="submit" disabled={isDisabled}>Purchase</button>
           <ul className="cart-container">{
-            cartItems.map(item => (
+            cartState.cartItems.map(item => (
               <li key={item.id}>
                 <CartItem id={item.id} amount={item.amount} totalPrice={item.totalPrice} />
               </li>
